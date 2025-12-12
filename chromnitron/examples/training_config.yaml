@@ -1,0 +1,40 @@
+# Example configuration for Chromnitron training
+seed: 42
+
+model_config:
+  num_genomic_features: 1
+  hidden: 384
+  num_attn_blocks: 16
+  num_of_scale: 4
+  num_targets: 1
+  no_confidence_prediction: true
+  sample_per_chunk: 1
+  prot_dim: 2560
+
+# Data settings
+# All paths are placeholders; replace with your own resources.
+data_config:
+  assembly: hg38
+  chrom_sizes_path: /path/to/resources/hg38.chrom.sizes
+  sequence_path: /path/to/resources/DNA_sequence/hg38.zarr
+  input_features_path: /path/to/resources/ATAC_seq/HepG2.zarr
+  label_path: /path/to/training_labels/CTCF.zarr
+  esm_embedding_path: /path/to/CAP_embeddings/CTCF.npz
+  loci: /path/to/loci/train_windows.bed
+  sample_size: 8192
+  step_size: 5120
+  excluded_region_path: /path/to/blacklist_regions.bed
+  reverse_aug: true
+  gaussian_noise_aug: false
+
+training_config:
+  batch_size: 2
+  num_workers: 4
+  num_epochs: 5
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-5
+  grad_clip: 1.0
+  amp: true
+  save_every: 1
+  checkpoint_dir: checkpoints
+  resume_from:
