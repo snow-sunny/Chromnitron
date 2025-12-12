@@ -55,6 +55,14 @@ Sequence, ATAC-seq and CAP embeddings: `!tar -xf input_resources.tar`
 python inference.py examples/local_config.yaml
 ```
 
+## Train (experimental)
+An example configuration is available at `examples/training_config.yaml`. After filling in
+paths to your Zarr tracks, CAP embeddings, and BED windows, launch training with:
+
+```bash
+python training.py examples/training_config.yaml
+```
+
 # Output file structure
 ```bash
 <path-to-output-directory>
